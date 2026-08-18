@@ -1,0 +1,21 @@
+﻿@model List<Employee>
+
+<h2>Employee List</h2>
+
+<a asp-action="Create">Add Employee</a>
+
+
+
+    @foreach (var employee in Model)
+    {
+        
+            @employee.Name
+            @employee.Department
+           @employee.Salary
+            
+                <a asp-action="Edit" asp-route-id="@employee.Id">Edit</a> 
+                <a asp-action="Delete" asp-route-id="@employee.Id">Delete</a>
+           
+        
+    }
+
