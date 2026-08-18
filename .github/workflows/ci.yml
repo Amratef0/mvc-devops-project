@@ -29,3 +29,6 @@ jobs:
 
       - name: Build
         run: dotnet build --no-restore --configuration Release
+
+      - name: Build Docker image
+        run: docker build -t mvc-app:latest .
