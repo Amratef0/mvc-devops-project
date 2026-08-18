@@ -1,0 +1,31 @@
+﻿services:
+
+  mvc-app:
+    build: .
+    container_name: mvc-app
+    ports:
+      - "8080:8080"
+    networks:
+      - mvc-network
+    depends_on:
+      - mvc-sqlserver
+
+  mvc-sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: mvc-sqlserver
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "YourPassword123!"
+    ports:
+      - "1434:1433"
+    networks:
+      - mvc-network
+    volumes:
+      - sqlserver_data:/var/opt/mssql
+
+networks:
+  mvc-network:
+    driver: bridge
+
+volumes:
+  sqlserver_data:
