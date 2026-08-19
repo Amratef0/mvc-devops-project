@@ -19,7 +19,7 @@ namespace mvc.Controllers
             var employees = _context.Employees.ToList();
             return View(employees);
         }
-
+       //create
         public IActionResult Create()
         {
             return View();
