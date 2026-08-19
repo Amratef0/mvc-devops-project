@@ -2,23 +2,30 @@
 kind: Deployment
 metadata:
   name: mvc-sqlserver
+
 spec:
   replicas: 1
+
   selector:
     matchLabels:
       app: mvc-sqlserver
+
   template:
     metadata:
       labels:
         app: mvc-sqlserver
+
     spec:
       containers:
         - name: sqlserver
           image: mcr.microsoft.com/mssql/server:2022-latest
+
           ports:
             - containerPort: 1433
+
           env:
             - name: ACCEPT_EULA
               value: "Y"
+
             - name: MSSQL_SA_PASSWORD
               value: "YourStrong@Pass123"
