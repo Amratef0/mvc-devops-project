@@ -1,0 +1,25 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: mvc-app
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: mvc-app
+
+  template:
+    metadata:
+      labels:
+        app: mvc-app
+
+    spec:
+      containers:
+        - name: mvc-app
+          image: amratefalgayar/mvc-app:latest
+
+          ports:
+            - containerPort: 8080
